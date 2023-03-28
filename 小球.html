@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			body{
+				padding:80px 0;
+			}
+			canvas{
+				display: block;
+				margin: 0 auto;
+				border: solid 1px black;
+			}
+		</style>
+		<script type="text/javascript">
+			document.addEventListener("DOMContentLoaded",function(){
+				var canvas =document.querySelector("canvas");
+				var cn = canvas.getContext("2d");
+				var x = -20;
+				var timer;
+				timer = setInterval(move,20)
+				function move(){
+					if(x<=400){
+						x++;
+					}else{
+						x=-20;
+					}
+					console.log(x)
+					cn.beginPath();
+					canvas.width =400;
+					canvas.height =400;
+					cn.arc(x,200,20,0,360*Math.PI/180);
+					cn.arc(420+x,200,20,0,360*Math.PI/180);
+					cn.fill();
+				}
+				
+			})
+		</script>
+	</head>
+		
+	<body>
+		<canvas width="400" height="400"></canvas>
+	</body>
+</html>

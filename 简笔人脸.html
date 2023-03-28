@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			body{
+				padding:80px 0;
+			}
+			canvas{
+				display: block;
+				margin: 0 auto;
+				border: solid 1px black;
+			}
+		</style>
+		<script type="text/javascript">
+			document.addEventListener("DOMContentLoaded",function(){
+				var canvas =document.querySelector("canvas");
+				var cn = canvas.getContext("2d");
+				var i = 0;
+				//轮廓
+				cn.arc(200,200,100,0,360*Math.PI/180);
+				cn.stroke();
+				//左眼+眉毛
+				cn.beginPath();
+				cn.arc(170,170,10,0,360*Math.PI/180);
+				cn.fill();
+				cn.stroke();
+				cn.beginPath();
+				cn.arc(170,165,15,0,180*Math.PI/180,true);
+				cn.stroke();
+				//右眼+眉毛
+				cn.beginPath();
+				cn.arc(230,170,10,0,360*Math.PI/180);
+				cn.fill();
+				cn.stroke();
+				cn.beginPath();
+				cn.arc(230,165,15,0,180*Math.PI/180,true);
+				cn.stroke();
+				//鼻子
+				cn.beginPath();
+				cn.moveTo(200,190);
+				cn.lineTo(190,220);
+				cn.lineTo(210,220);
+				cn.fill();
+				cn.stroke();
+				//嘴巴
+				
+				cn.beginPath();
+				cn.moveTo(185,244);
+				cn.lineTo(215,244);
+				cn.stroke();
+				cn.beginPath();
+				setInterval(function(){
+					if(i<1){
+						i++;
+						cn.beginPath();
+						cn.arc(200,245,15,0,180*Math.PI/180,false);
+						cn.fillStyle="red";
+						cn.strokeStyle="white";
+						cn.stroke();
+						cn.fill();
+					}else{
+						i--;
+						cn.beginPath();
+						cn.arc(200,245,15,0,180*Math.PI/180,false);
+						cn.strokeStyle="white";
+						cn.fillStyle="white";
+						cn.stroke();
+						cn.fill();
+					}
+					console.log(i)
+				},1000)
+				
+			})
+		</script>
+	</head>
+		
+	<body>
+		<canvas width="400" height="400"></canvas>
+	</body>
+</html>
